@@ -1,0 +1,32 @@
+# 多数据源配置
+mysql:
+  server: localhost:3306
+  username: root
+  password: root
+test:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${mysql.server}/test?characterEncoding=utf8&useSSL=false
+    username: ${mysql.username}
+    password: ${mysql.password}
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+logging:
+  level:
+    com: debug

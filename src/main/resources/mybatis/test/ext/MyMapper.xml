@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.test.ext.MyUsersMapperExt">
+  <resultMap id="MySelfMap" type="com.model.test.ext.MyUsersExt" extends="com.mapper.test.MyUsersMapper.BaseResultMap">
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="obj_json" property="objJsonData" jdbcType="VARCHAR" javaType="com.model.test.ext.ObjJsonData" typeHandler="com.handler.JsonTypeHandler" />
+    <result column="str_arr" property="strArrList" jdbcType="VARCHAR"   typeHandler="com.handler.JsonTypeHandler"/>
+    <result column="obj_arr" property="objArrList" jdbcType="VARCHAR"   typeHandler="com.handler.JsonTypeHandler"/>
+  </resultMap>
+
+  <select id="selectJson" resultMap="MySelfMap">
+	select * from users where user_id =1
+  </select>
+</mapper>
