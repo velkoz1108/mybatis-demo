@@ -1,7 +1,9 @@
 package com.db;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.model.test.ext.CityTypeHandler;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.BaseTypeHandler;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -70,7 +72,7 @@ public class BaseDbConfig {
     private String connectionProperties;
 
     @Bean(name = "baseDataSource")
-    public DataSource masterDataSource(){
+    public DataSource masterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(url);
         dataSource.setUsername(username);

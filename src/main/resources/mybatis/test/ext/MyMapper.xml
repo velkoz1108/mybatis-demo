@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.test.ext.MyUsersMapperExt">
-  <resultMap id="MySelfMap" type="com.model.test.ext.MyUsersExt" extends="com.mapper.test.MyUsersMapper.BaseResultMap">
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="obj_json" property="objJsonData" jdbcType="VARCHAR" javaType="com.model.test.ext.ObjJsonData" typeHandler="com.handler.JsonTypeHandler" />
-    <result column="str_arr" property="strArrList" jdbcType="VARCHAR"   typeHandler="com.handler.JsonTypeHandler"/>
-    <result column="obj_arr" property="objArrList" jdbcType="VARCHAR"   typeHandler="com.handler.JsonTypeHandler"/>
-  </resultMap>
+    <resultMap id="MySelfMap" type="com.model.test.ext.MyUsersExt"
+               extends="com.mapper.test.MyUsersMapper.BaseResultMap">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="obj_json" property="objJsonData" jdbcType="VARCHAR" javaType="com.model.test.ext.ObjJsonData"
+                typeHandler="com.handler.JsonTypeHandler"/>
+        <result column="str_arr" property="strArrList" jdbcType="VARCHAR" typeHandler="com.handler.JsonTypeHandler"/>
+        <result column="obj_arr" property="objArrList" jdbcType="VARCHAR" typeHandler="com.handler.JsonTypeHandler"/>
+    </resultMap>
 
-  <select id="selectJson" resultMap="MySelfMap">
+    <select id="selectJson" resultMap="MySelfMap">
 	select * from users where user_id =1
+  </select>
+
+    <resultMap id="MyMap" type="com.model.test.ext.MyUserStatus">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="en_status" jdbcType="VARCHAR" property="enStatus" />
+        <result column="status" property="enumStatus" javaType="com.model.test.ext.EnumStatus"
+                typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectEnum" resultMap="MyMap">
+	  select * from user_status
+  </select>
+
+    <resultMap id="MyMap2" type="com.model.test.ext.MyUserStatus">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="en_status" property="enumStatus" javaType="com.model.test.ext.EnumStatus"
+                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectEnum2" resultMap="MyMap2">
+	  select * from user_status
+  </select>
+
+    <resultMap id="MyMap3" type="com.model.test.ext.MyCity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="city_code" property="enumCity" javaType="com.model.test.ext.EnumCity"
+                typeHandler="com.model.test.ext.CityTypeHandler"/>
+        <result column="en_status" property="enStatus" />
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectEnum3" resultMap="MyMap3">
+	  select * from user_status
   </select>
 </mapper>
