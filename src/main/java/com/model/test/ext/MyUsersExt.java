@@ -13,5 +13,5 @@ public class MyUsersExt extends MyUsers {
 
     private ObjJsonData objJsonData;
 
-    private List<Map<String,Object>> objArrList ;
+    private List<ObjJsonData> objArrList ;
 }

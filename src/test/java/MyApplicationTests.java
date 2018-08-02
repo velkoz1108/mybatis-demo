@@ -30,7 +30,7 @@ public class MyApplicationTests {
         ObjJsonData myInfo = myUsersExt.getObjJsonData();
         System.out.println("myInfo = " + JSON.toJSONString(myInfo));
 
-        List<Map<String, Object>> moreList = myUsersExt.getObjArrList();
+        List<ObjJsonData> moreList = myUsersExt.getObjArrList();
         System.out.println("moreList = " + JSON.toJSONString(moreList));
     }
 

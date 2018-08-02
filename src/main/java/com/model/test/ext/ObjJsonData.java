@@ -11,5 +11,6 @@ import lombok.Data;
 public class ObjJsonData {
     private String name;
     private String title;
+    private String what;
     private int level;
 }
