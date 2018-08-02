@@ -50,4 +50,11 @@
     <select id="selectEnum3" resultMap="MyMap3">
 	  select * from user_status
   </select>
+
+    <insert id="insertUserStatus" useGeneratedKeys="true" keyProperty="id">
+        insert into user_status (status, en_status, user_id, city_code) values
+        <foreach item="item" collection="list" separator=",">
+            (#{item.status}, #{item.enStatus}, #{item.userId}, #{item.cityCode})
+        </foreach>
+    </insert>
 </mapper>

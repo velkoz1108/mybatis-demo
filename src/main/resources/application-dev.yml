@@ -25,6 +25,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
+#    监控统计用的filter:stat   日志用的filter:log4j    防御sql注入的filter:wall
     filters: stat,wall
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 logging:

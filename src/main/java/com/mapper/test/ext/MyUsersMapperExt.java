@@ -1,5 +1,6 @@
 package com.mapper.test.ext;
 
+import com.model.test.UserStatus;
 import com.model.test.ext.MyCity;
 import com.model.test.ext.MyUserStatus;
 import com.model.test.ext.MyUsersExt;
@@ -10,12 +11,15 @@ public interface MyUsersMapperExt {
 
     MyUsersExt selectJson();
 
-//    EnumOrdinalTypeHandler
+    //    EnumOrdinalTypeHandler
 //    数据存的是 0 就对应 EnumStatus 的第1个
     List<MyUserStatus> selectEnum();
 
-//    EnumTypeHandler
+    //    EnumTypeHandler
     List<MyUserStatus> selectEnum2();
 
     List<MyCity> selectEnum3();
+
+
+    int insertUserStatus(List<UserStatus> statusList);
 }
