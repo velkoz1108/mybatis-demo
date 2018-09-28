@@ -4,8 +4,13 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-
     <context id="MySqlTables" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Test"/>
+        </plugin>
+
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=utf8"
                         userId="root"
@@ -31,7 +36,7 @@
 
         <!--<table tableName="users" domainObjectName="MyUsers"/>-->
         <!--<table tableName="user_status" domainObjectName="UserStatus"/>-->
-        <table tableName="view_users" domainObjectName="ViewUsers"/>
+        <table tableName="example" domainObjectName="Example"/>
 
 
     </context>
